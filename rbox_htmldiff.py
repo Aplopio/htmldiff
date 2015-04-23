@@ -8,6 +8,9 @@ __version__ = '0.22'
 
 import difflib, string
 
+__all__ = ["isTag", "textDiff", "html2list"]
+
+
 def isTag(x): return x[0] == "<" and x[-1] == ">"
 
 def textDiff(a, b):
