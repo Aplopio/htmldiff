@@ -59,14 +59,3 @@ def html2list(x, b=0):
 			else: cur += c
 	out.append(cur)
 	return filter(lambda x: x is not '', out)
-
-if __name__ == '__main__':
-	import sys
-	try:
-		a, b = sys.argv[1:3]
-	except ValueError:
-		print "htmldiff: highlight the differences between two html files"
-		print "usage: " + sys.argv[0] + " a b"
-		sys.exit(1)
-	print textDiff(open(a).read(), open(b).read())
-	
