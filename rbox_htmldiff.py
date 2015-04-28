@@ -27,11 +27,11 @@ def textDiff(a, b):
 			# @@ need to do something more complicated here
 			# call textDiff but not for html, but for some html... ugh
 			# gonna cop-out for now
-			out.append('<del style="color:#999;">'+''.join(a[e[1]:e[2]]) + '</del><ins style="color:#409370;background:#FFE599;text-decoration:none;">'+''.join(b[e[3]:e[4]])+"</ins>")
+			out.append('<del style="color:#999;">'+''.join(a[e[1]:e[2]]) + '</del><ins style="background:#ffc;text-decoration:none;">'+''.join(b[e[3]:e[4]])+"</ins>")
 		elif e[0] == "delete":
 			out.append('<del style="color:#999;">'+ ''.join(a[e[1]:e[2]]) + "</del>")
 		elif e[0] == "insert":
-			out.append('<ins style="color:#409370;background:#FFE599;text-decoration:none;">'+''.join(b[e[3]:e[4]]) + "</ins>")
+			out.append('<ins style="background:#ffc;text-decoration:none;">'+''.join(b[e[3]:e[4]]) + "</ins>")
 		elif e[0] == "equal":
 			out.append(''.join(b[e[3]:e[4]]))
 		else:
