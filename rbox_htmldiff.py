@@ -13,9 +13,10 @@ __all__ = ["isTag", "textDiff", "html2list"]
 
 def isTag(x): return x[0] == "<" and x[-1] == ">"
 
-def textDiff(a, b):
+def textDiff(a, b, ins_attrs=None, del_attrs=None):
 	"""Takes in strings a and b and returns a human-readable HTML diff."""
-
+	ins_attrs = ins_attrs or ''
+	del_attrs = del_attrs or ''
 	out = []
 	a, b = html2list(a), html2list(b)
 	try: # autojunk can cause malformed HTML, but also speeds up processing.
@@ -27,11 +28,11 @@ def textDiff(a, b):
 			# @@ need to do something more complicated here
 			# call textDiff but not for html, but for some html... ugh
 			# gonna cop-out for now
-			out.append('<del style="color:#999;">'+''.join(a[e[1]:e[2]]) + '</del><ins style="background:#ffc;text-decoration:none;">'+''.join(b[e[3]:e[4]])+"</ins>")
+			out.append('<del '+del_attrs+'>'+''.join(a[e[1]:e[2]]) + '</del><ins '+ins_attrs+'>'+''.join(b[e[3]:e[4]])+"</ins>")
 		elif e[0] == "delete":
-			out.append('<del style="color:#999;">'+ ''.join(a[e[1]:e[2]]) + "</del>")
+			out.append('<del '+del_attrs+'>'+ ''.join(a[e[1]:e[2]]) + "</del>")
 		elif e[0] == "insert":
-			out.append('<ins style="background:#ffc;text-decoration:none;">'+''.join(b[e[3]:e[4]]) + "</ins>")
+			out.append('<ins '+ins_attrs+'>'+''.join(b[e[3]:e[4]]) + "</ins>")
 		elif e[0] == "equal":
 			out.append(''.join(b[e[3]:e[4]]))
 		else:
