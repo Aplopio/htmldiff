@@ -8,7 +8,7 @@ except ImportError:
     from setuptools import setup
 setup(
     name='rbox_htmldiff',
-    version='0.0.2',
+    version='0.0.3',
     py_modules=['rbox_htmldiff', ],
     install_requires=[
         # -*- Extra requirements: -*-
