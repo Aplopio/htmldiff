@@ -59,4 +59,4 @@ def html2list(x, b=0):
 			elif c in string.whitespace: out.append(cur+c); cur = ''
 			else: cur += c
 	out.append(cur)
-	return filter(lambda x: x is not '', out)
+	return [x for x in out if x is not '']
