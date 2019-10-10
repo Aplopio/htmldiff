@@ -36,7 +36,7 @@ def textDiff(a, b, ins_attrs=None, del_attrs=None):
 		elif e[0] == "equal":
 			out.append(''.join(b[e[3]:e[4]]))
 		else:
-			raise "Um, something's broken. I didn't expect a '" + `e[0]` + "'."
+			raise "Um, something's broken. I didn't expect a '" + repr(e[0]) + "'."
 	return ''.join(out)
 
 def html2list(x, b=0):
